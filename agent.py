@@ -469,22 +469,9 @@ def get_system_prompt(voice: str) -> str:
     """
     return VOICE_PROMPTS.get(voice, VOICE_PROMPTS["Nour"])
 
+
 def audit_listing(title, bullets, description, reviews, target_keywords, voice: str = "Nour"):
     system_prompt = get_system_prompt(voice)
-
-response = client.chat.completions.create(
-    model="gpt-4.1-mini",
-    messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": prompt},
-    ],
-)
-
-audit_text = response.choices[0].message.content
-
-    """
-    Step 1: Analyze the current listing and identify issues & opportunities.
-    """
 
     audit_prompt = f"""
 You are auditing the following Amazon listing.
@@ -517,7 +504,7 @@ Tasks:
 Respond in a structured, clear format.
 """
 
-    completion = client.chat.completions.create(
+    response = client.chat.completions.create(
         model="gpt-4.1-mini",
         messages=[
             {"role": "system", "content": "You are an expert Amazon listing auditor."},
@@ -525,7 +512,7 @@ Respond in a structured, clear format.
         ],
     )
 
-    return completion.choices[0].message.content
+    return response.choices[0].message.content
 
 
 def rewrite_listing(
@@ -540,19 +527,6 @@ def rewrite_listing(
     voice: str = "Nour",
 ):
     system_prompt = get_system_prompt(voice)
-
-response = client.chat.completions.create(
-    model="gpt-4.1-mini",
-    messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": prompt},
-    ],
-)
-
-optimized_text = response.choices[0].message.content
-    """
-    Step 2: Use the audit to generate optimized copy.
-    """
 
     rewrite_prompt = f"""
 You have audited this Amazon listing. Here is your AUDIT SUMMARY:
@@ -581,11 +555,10 @@ Use the AUDIT SUMMARY as your improvement plan.
 Now output the final optimized content in the exact format specified in the system prompt.
 """
 
-    # ✅ Use SYSTEM_PROMPT and the correct variable rewrite_prompt
     response = client.chat.completions.create(
         model="gpt-4.1-mini",
         messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": system_prompt},
             {"role": "user", "content": rewrite_prompt},
         ],
     )
