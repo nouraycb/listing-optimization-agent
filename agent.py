@@ -472,14 +472,15 @@ def get_system_prompt(voice: str) -> str:
 def audit_listing(title, bullets, description, reviews, target_keywords, voice: str = "Nour"):
     system_prompt = get_system_prompt(voice)
 
-    response = client.responses.create(
-        model="gpt-4.1-mini",
-        input=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": prompt},
-        ],
-    )
-    # rest of your code stays the same
+response = client.chat.completions.create(
+    model="gpt-4.1-mini",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": prompt},
+    ],
+)
+
+audit_text = response.choices[0].message.content
 
     """
     Step 1: Analyze the current listing and identify issues & opportunities.
@@ -540,14 +541,15 @@ def rewrite_listing(
 ):
     system_prompt = get_system_prompt(voice)
 
-    response = client.responses.create(
-        model="gpt-4.1-mini",
-        input=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": prompt},
-        ],
-    )
-    # rest of your code stays the same
+response = client.chat.completions.create(
+    model="gpt-4.1-mini",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": prompt},
+    ],
+)
+
+optimized_text = response.choices[0].message.content
     """
     Step 2: Use the audit to generate optimized copy.
     """
