@@ -182,6 +182,19 @@ css = """
     font-size: 0.8rem;
     opacity: 0.8;
 }
+
+#voice-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+}
+
+#voice-selector .gr-dropdown {
+    width: 320px;
+    text-align: center;
+}
+
 """
 
 
@@ -203,11 +216,12 @@ with gr.Blocks(
 
 
         # 🌐 Global voice selector (used by BOTH tabs)
+        with gr.Column(elem_id="voice-selector"):
         voice_dropdown = gr.Dropdown(
-            choices=["Nour / CORPORATE", "Lauren / SASSY", "Thorfinn / VIKING"],
-            value="Nour / CORPORATE",
-            label="Agent Voice / Brand Persona",
-        )
+        choices=["Nour / CORPORATE", "Lauren / SASSY", "Thorfinn / VIKING"],
+        value="Nour / CORPORATE",
+        label="Agent Voice / Brand Persona",
+    )
 
 
     # ===== MANUAL INPUT TAB =====
