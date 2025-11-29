@@ -217,10 +217,10 @@ with gr.Blocks(
 
         # 🌐 Global voice selector (used by BOTH tabs)
         with gr.Column(elem_id="voice-selector"):
-        voice_dropdown = gr.Dropdown(
-        choices=["Nour / CORPORATE", "Lauren / SASSY", "Thorfinn / VIKING"],
-        value="Nour / CORPORATE",
-        label="Agent Voice / Brand Persona",
+            voice_dropdown = gr.Dropdown(
+                choices=["Nour / CORPORATE", "Lauren / SASSY", "Thorfinn / VIKING"],
+                value="Nour / CORPORATE",
+                label="Agent Voice / Brand Persona",
     )
 
 
