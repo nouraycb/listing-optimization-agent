@@ -183,33 +183,29 @@ css = """
     opacity: 0.8;
 }
 
-/* Container: center the voice selector under the header */
+/* Center the voice selector block under the header */
 #voice-selector {
     display: flex;
     justify-content: center;
     margin-top: 12px;
 }
 
-/* Center the dropdown box itself and limit its width */
-#voice-selector .gr-dropdown {
+/* Limit the width of the dropdown container and center it */
+#voice-selector > * {
     max-width: 360px;
     width: 100%;
     margin: 0 auto;
 }
 
-/* Center the selected text inside the dropdown */
-#voice-selector select,
-#voice-selector .gr-input,
-#voice-selector .gr-input input {
-    text-align: center;
-    text-align-last: center;
+/* Hard-center all text inside the voice selector area */
+#voice-selector * {
+    text-align: center !important;
 }
 
-/* Center the label text */
+/* Make sure the label is centered as well */
 #voice-selector label {
-    text-align: center;
-    width: 100%;
     display: block;
+    width: 100%;
 }
 
 """
