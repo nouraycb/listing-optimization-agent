@@ -73,7 +73,7 @@ def optimize_from_identifiers_ui(identifiers_text, target_keywords, category, au
             description=description,
             reviews="",
             target_keywords=target_keywords,
-	    voice=voice,
+            voice=voice,
         )
 
         optimized_text = rewrite_listing(
@@ -188,7 +188,7 @@ css = """
 # ------------ UI LAYOUT (Blocks) ------------
 # CHANGE #1: attach theme and css to Blocks instead of launch
 with gr.Blocks(
-    title="NOUR's Amazon Listing Optimization Agent | Rufus-Friendly",
+    title="Amazon Listing Optimization Agent | Rufus-Friendly",
     theme=theme,      # ✅ moved here
     css=css,          # ✅ moved here
 ) as demo:
@@ -196,7 +196,7 @@ with gr.Blocks(
     with gr.Column(elem_id="main-header"):
         gr.Markdown(
             """
-<h1>🧠 NOUR's Amazon Listing Optimization Agent | Rufus-Friendly! </h1>
+<h1>🧠 Amazon Listing Optimization Agent | Rufus-Friendly </h1>
 <p>Audit & rewrite Amazon listings using <b>OpenAI + Keepa</b>, with support for manual input and batch ASIN/URL runs.</p>
 """
         )
@@ -243,12 +243,11 @@ with gr.Blocks(
                     label="Target Audience",
                     placeholder="e.g. home bakers, Mediterranean dessert lovers, pastry chefs...",
                 )
-		voice_dropdown = gr.Dropdown(
-    		choices=["Nour", "Lauren", "Thorfinn"],
-   		value="Nour",
-    		label="Agent Voice / Brand Persona",
-		)
-
+                voice_dropdown = gr.Dropdown(
+                    choices=["Nour", "Lauren", "Thorfinn"],
+                    value="Nour",
+                    label="Agent Voice / Brand Persona",
+                )
 
                 manual_button = gr.Button("🚀 Optimize Listing", variant="primary")
 
@@ -285,7 +284,7 @@ with gr.Blocks(
                 keywords_input,
                 category_input,
                 audience_input,
-		voice_dropdown
+                voice_dropdown,
             ],
             outputs=[manual_audit_output, manual_optimized_output],
         )
