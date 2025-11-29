@@ -17,6 +17,7 @@ def optimize_manual_ui(
     target_keywords,
     category,
     audience,
+    voice,
 ):
     audit_text = audit_listing(
         title=title,
@@ -24,6 +25,7 @@ def optimize_manual_ui(
         description=description,
         reviews=reviews,
         target_keywords=target_keywords,
+        voice=voice,
     )
 
     optimized_text = rewrite_listing(
@@ -35,13 +37,14 @@ def optimize_manual_ui(
         category=category,
         audience=audience,
         audit_summary=audit_text,
+        voice=voice,
     )
 
     return audit_text, optimized_text
 
 
 # ------------ ASIN / URL MODE FUNCTION ------------
-def optimize_from_identifiers_ui(identifiers_text, target_keywords, category, audience):
+def optimize_from_identifiers_ui(identifiers_text, target_keywords, category, audience, voice):
     # Split and clean input lines
     lines = [line.strip() for line in identifiers_text.splitlines() if line.strip()]
     if not lines:
@@ -70,6 +73,7 @@ def optimize_from_identifiers_ui(identifiers_text, target_keywords, category, au
             description=description,
             reviews="",
             target_keywords=target_keywords,
+	    voice=voice,
         )
 
         optimized_text = rewrite_listing(
@@ -81,6 +85,7 @@ def optimize_from_identifiers_ui(identifiers_text, target_keywords, category, au
             category=category,
             audience=audience,
             audit_summary=audit_text,
+            voice=voice,
         )
 
         block = f"""
@@ -238,6 +243,12 @@ with gr.Blocks(
                     label="Target Audience",
                     placeholder="e.g. home bakers, Mediterranean dessert lovers, pastry chefs...",
                 )
+		voice_dropdown = gr.Dropdown(
+    		choices=["Nour", "Lauren", "Thorfinn"],
+   		value="Nour",
+    		label="Agent Voice / Brand Persona",
+		)
+
 
                 manual_button = gr.Button("🚀 Optimize Listing", variant="primary")
 
@@ -274,6 +285,7 @@ with gr.Blocks(
                 keywords_input,
                 category_input,
                 audience_input,
+		voice_dropdown
             ],
             outputs=[manual_audit_output, manual_optimized_output],
         )
@@ -341,6 +353,7 @@ with gr.Blocks(
                 keywords_batch,
                 category_batch,
                 audience_batch,
+                voice_dropdown,
             ],
             outputs=[batch_output],
         )
