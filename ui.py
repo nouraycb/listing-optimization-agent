@@ -190,9 +190,25 @@ css = """
     margin-top: 12px;
 }
 
+/* Center the dropdown control */
 #voice-selector .gr-dropdown {
-    width: 320px;
+    width: 360px;
     text-align: center;
+}
+
+/* Center the selected value text inside the dropdown */
+#voice-selector .gr-dropdown input,
+#voice-selector .gr-dropdown .wrap,
+#voice-selector .gr-dropdown .single,
+#voice-selector .gr-dropdown .value {
+    text-align: center !important;
+}
+
+/* Center the label as well */
+#voice-selector label {
+    text-align: center;
+    width: 100%;
+    display: block;
 }
 
 """
