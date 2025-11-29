@@ -463,11 +463,9 @@ Begin every engagement ready to conquer.
 
 
 def get_system_prompt(voice: str) -> str:
-    """
-    Returns the system prompt for the given voice.
-    Defaults to Nour if something unexpected is passed.
-    """
-    return VOICE_PROMPTS.get(voice, VOICE_PROMPTS["Nour"])
+    # Extract base voice name (before slash)
+    clean_voice = voice.split("/")[0].strip()
+    return VOICE_PROMPTS.get(clean_voice, VOICE_PROMPTS["Nour"])
 
 
 def audit_listing(title, bullets, description, reviews, target_keywords, voice: str = "Nour"):

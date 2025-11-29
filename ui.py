@@ -201,6 +201,15 @@ with gr.Blocks(
 """
         )
 
+
+        # 🌐 Global voice selector (used by BOTH tabs)
+        voice_dropdown = gr.Dropdown(
+            choices=["Nour / CORPORATE", "Lauren / SASSY", "Thorfinn / VIKING"],
+            value="Nour / CORPORATE",
+            label="Agent Voice / Brand Persona",
+        )
+
+
     # ===== MANUAL INPUT TAB =====
     with gr.Tab("✨ Manual Input"):
         with gr.Row():
@@ -242,11 +251,6 @@ with gr.Blocks(
                 audience_input = gr.Textbox(
                     label="Target Audience",
                     placeholder="e.g. home bakers, Mediterranean dessert lovers, pastry chefs...",
-                )
-                voice_dropdown = gr.Dropdown(
-                    choices=["Nour", "Lauren", "Thorfinn"],
-                    value="Nour",
-                    label="Agent Voice / Brand Persona",
                 )
 
                 manual_button = gr.Button("🚀 Optimize Listing", variant="primary")
