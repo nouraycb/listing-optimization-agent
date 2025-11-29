@@ -183,28 +183,29 @@ css = """
     opacity: 0.8;
 }
 
+/* Container: center the voice selector under the header */
 #voice-selector {
     display: flex;
     justify-content: center;
-    align-items: center;
     margin-top: 12px;
 }
 
-/* Center the dropdown control */
+/* Center the dropdown box itself and limit its width */
 #voice-selector .gr-dropdown {
-    width: 360px;
+    max-width: 360px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Center the selected text inside the dropdown */
+#voice-selector select,
+#voice-selector .gr-input,
+#voice-selector .gr-input input {
     text-align: center;
+    text-align-last: center;
 }
 
-/* Center the selected value text inside the dropdown */
-#voice-selector .gr-dropdown input,
-#voice-selector .gr-dropdown .wrap,
-#voice-selector .gr-dropdown .single,
-#voice-selector .gr-dropdown .value {
-    text-align: center !important;
-}
-
-/* Center the label as well */
+/* Center the label text */
 #voice-selector label {
     text-align: center;
     width: 100%;
