@@ -550,6 +550,15 @@ CUSTOMER REVIEWS (may be truncated):
 {reviews}
 
 Use the AUDIT SUMMARY as your improvement plan.
+
+Your output MUST:
+- Follow the structure described in the SYSTEM_PROMPT.
+- Make the listing highly scannable and conversion-focused.
+- End with a clearly labeled **FAQ** section containing 5–7 concise Q&A pairs that:
+  - Address the most important buyer objections, confusions, and hesitations.
+  - Clarify how to use the product, who it’s for, and what makes it different.
+  - Reduce perceived risk (e.g., sizing, storage, shelf life, compatibility, ingredients, common mistakes).
+
 Now output the final optimized content in the exact format specified in the system prompt.
 """
 
